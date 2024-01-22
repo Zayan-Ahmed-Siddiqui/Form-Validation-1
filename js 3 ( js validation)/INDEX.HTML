@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Site</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css"
+        integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+        integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container">
+        <form action="indi.html" onsubmit=" return validate()">
+            <table>
+                <tr>
+                    <td><label for="username">Username</label></td>
+                </tr>
+                <tr>
+
+                    <td>
+                        <input type="text" id="username" placeholder="Enter Username" class="form-control  ">
+
+                        <p style="color: red; font-size: 11px; visibility: hidden;" id="usererror">
+                            *Username is InValid!
+                        </p>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td><label for="Password">Password</label></td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="password" id="Password" placeholder="Enter Password" class="form-control">
+
+                        <p style="color: red; font-size: 11px; visibility: hidden;" id="passerror">
+                            *Password is InValid!
+                        </p>
+
+                    </td>
+                </tr>
+
+
+            </table>
+            <input type="Submit" value="Login" class="btn btn-success md-2">
+
+
+        </form>
+    </div>
+
+    <script>
+        function validate() {
+            var uname = document.getElementById('username');
+            var pass = document.getElementById('Password');
+            inValid = true;
+            if (uname.value.trim() == '') {
+                document.getElementById('usererror').style.visibility = 'visible';
+                inValid = false;
+            }
+            if (uname.value.trim() != '') {
+                document.getElementById('usererror').style.visibility = 'hidden';
+                document.getElementById('username').style.border = '2px solid green';
+                inValid = true;
+            }
+            if (pass.value.trim() == '') {
+                document.getElementById('passerror').style.visibility = 'visible'
+                inValid = false;
+            }
+            else if (pass.value.trim().length < 5) {
+                alert('Password is too Short')
+                document.getElementById('passerror').style.visibility = 'visible'
+                inValid = false;
+            }
+            else if (pass.value.trim() != '') {
+                document.getElementById('passerror').style.visibility = 'hidden';
+                document.getElementById('Password').style.border = '2px solid green';
+                inValid = true;
+            }
+            if (uname.value.trim() != '' && pass.value.trim().length > 5) {
+                inValid = true;
+            }
+            return inValid;
+        }
+
+    </script>
+</body>
+
+</html>
